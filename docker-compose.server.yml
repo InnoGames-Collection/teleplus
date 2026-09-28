@@ -1,0 +1,144 @@
+# ==============================================================================
+# TelePlus — Complete Production Stack (Web + Admin + API + Postgres + Valkey)
+# Target: GCP Compute Engine VM (innoserver-serv001: 34.41.116.217)
+# Port Block:
+#   - 3500: teleplus-web (20+ Games Casual Portal)
+#   - 3502: teleplus-api (Fastify Anti-Cheat API)
+#   - 3503: teleplus-admin (Telecom Operations Console)
+#   - 5438: teleplus-postgres (PostgreSQL 16)
+#   - 6388: teleplus-valkey (Valkey 8)
+# ==============================================================================
+
+services:
+  # ── PostgreSQL 16 Enterprise Relational Store ────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: teleplus-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-teleplus}
+      POSTGRES_USER: ${POSTGRES_USER:-teleplus_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-teleplus_secure_prod_password_2026}
+    volumes:
+      - teleplus_pgdata:/var/lib/postgresql/data
+      - ./db/migrations:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "127.0.0.1:5438:5432"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-teleplus_app} -d ${POSTGRES_DB:-teleplus}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ── Valkey 8.x Distributed High-Performance Cache ───────────────────────────
+  valkey:
+    image: valkey/valkey:8-alpine
+    container_name: teleplus-valkey
+    restart: unless-stopped
+    command: ["valkey-server", "--maxmemory", "96mb", "--maxmemory-policy", "allkeys-lru"]
+    ports:
+      - "127.0.0.1:6388:6379"
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ── TelePlus Fastify API ────────────────────────────────────────────────────
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: teleplus-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3502
+      HOST: 0.0.0.0
+      DOMAIN: innopulseplatform.com
+      DATABASE_URL: "postgresql://${POSTGRES_USER:-teleplus_app}:${POSTGRES_PASSWORD:-teleplus_secure_prod_password_2026}@postgres:5432/${POSTGRES_DB:-teleplus}?sslmode=disable"
+      VALKEY_URL: "redis://valkey:6379"
+      JWT_SECRET: ${JWT_SECRET:-teleplus-telecom-jwt-secret-key-prod-2026}
+      SP_GATEWAY_URL: ${SP_GATEWAY_URL:-http://168.119.53.26:8484}
+      SP_API_KEY: ${SP_API_KEY:-teleplus-sp-api-key-2026}
+      SP_WEBHOOK_SECRET: ${SP_WEBHOOK_SECRET:-teleplus-hmac-webhook-secret-2026}
+    ports:
+      - "127.0.0.1:3502:3502"
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:3502/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  # ── Dedicated Admin Console ─────────────────────────────────────────────────
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile.admin
+    container_name: teleplus-admin
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3503
+    ports:
+      - "127.0.0.1:3503:3503"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:3503/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  # ── Public Player Web Portal (20+ Games) ────────────────────────────────────
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.web
+    container_name: teleplus-web
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3500
+    ports:
+      - "127.0.0.1:3500:3500"
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:3500/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  teleplus_pgdata:
