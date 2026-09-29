@@ -1,5 +1,5 @@
 /**
- * Help & Support Page Component for GoPlay
+ * Help & Support Page Component for TelePlus
  * 
  * Sourced from the official Support Topics specification (Topics 1 through 9).
  */

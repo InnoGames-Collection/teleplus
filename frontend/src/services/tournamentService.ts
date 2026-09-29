@@ -71,7 +71,7 @@ export interface TournamentSummaryData {
 // Default Weekly Tournament Configuration (Admin-configurable)
 export const DEFAULT_WEEKLY_TOURNAMENT: WeeklyTournamentConfig = {
   id: 'weekly_championship_cup',
-  title: 'GoPlay Weekly Championship',
+  title: 'TelePlus Weekly Championship',
   subtitle: '4 Featured Games • Best Score Tournament',
   frequency: 'weekly',
   sponsor: 'telebirr & EthioTelecom',

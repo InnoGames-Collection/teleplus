@@ -350,21 +350,21 @@ export interface FAQItem {
 export const TELEPLUS_FAQ_ITEMS: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'What is GoPlay?',
+    question: 'What is TelePlus?',
     answer:
-      'GoPlay is the premier mobile gaming entertainment portal for telebirr SuperApp users, offering 26+ skill-based games, weekly tournaments, leaderboards, and prize competitions.',
+      'TelePlus is the premier mobile gaming entertainment portal for EthioTelecom users, offering 26+ skill-based games, weekly tournaments, leaderboards, and prize competitions.',
   },
   {
     id: 'faq-2',
     question: 'What are the subscription packages?',
     answer:
-      'GoPlay offers three straightforward subscription plans:\n• Daily: 5 Birr (24 hours full game access)\n• Weekly: 20 Birr (7 days full game access)\n• Monthly: 50 Birr (30 days full game access)\n\nAll subscriptions provide unlimited access to all games without ads or interruptions.',
+      'TelePlus offers three straightforward subscription plans:\n• Daily: 5 Birr (24 hours full game access)\n• Weekly: 20 Birr (7 days full game access)\n• Monthly: 50 Birr (30 days full game access)\n\nAll subscriptions provide unlimited access to all games without ads or interruptions.',
   },
   {
     id: 'faq-3',
     question: 'How do Coin packages work?',
     answer:
-      'You can top up GoPlay coins directly:\n• 10 Birr = 10 Coins\n• 25 Birr = 25 Coins\n• 50 Birr = 50 Coins\n\nCoins allow you to play coin-entry games and continue sessions.',
+      'You can top up TelePlus coins directly:\n• 10 Birr = 10 Coins\n• 25 Birr = 25 Coins\n• 50 Birr = 50 Coins\n\nCoins allow you to play coin-entry games and continue sessions.',
   },
   {
     id: 'faq-4',
@@ -406,7 +406,7 @@ export const TELEPLUS_FAQ_ITEMS: FAQItem[] = [
     id: 'faq-10',
     question: 'What if I encounter gameplay or connection issues?',
     answer:
-      'GoPlay is built for low-latency web play. If your connection drops momentarily, your local personal best scores are preserved. For further assistance, access Help & Customer Care from your Profile tab.',
+      'TelePlus is built for low-latency web play. If your connection drops momentarily, your local personal best scores are preserved. For further assistance, access Help & Customer Care from your Profile tab.',
   },
 ];
 

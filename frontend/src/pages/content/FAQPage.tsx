@@ -1,5 +1,5 @@
 /**
- * FAQ Page Component for GoPlay
+ * FAQ Page Component for TelePlus
  * 
  * Sourced from the official FAQ Content specification (Q1 through Q10).
  */

@@ -1,5 +1,5 @@
 /**
- * Terms & Conditions Page Component for GoPlay
+ * Terms & Conditions Page Component for TelePlus
  * 
  * Preserves all 9 sections from the official specification.
  */
@@ -14,28 +14,28 @@ interface TermSection {
   bulletPoints?: string[];
 }
 
-const GOPLAY_TERMS: TermSection[] = [
+const TELEPLUS_TERMS: TermSection[] = [
   {
     number: '1.0',
-    title: 'GoPlay Service Description',
+    title: 'TelePlus Service Description',
     paragraphs: [
-      'GoPlay is an official interactive mobile gaming service integrated within the telebirr SuperApp ecosystem.',
-      'GoPlay provides access to 26+ skill-based games, weekly competitive tournaments, verified real-time leaderboards, game coin transactions, and national championship rewards.',
+      'TelePlus is an official interactive mobile gaming service integrated within the EthioTelecom ecosystem.',
+      'TelePlus provides access to 26+ skill-based games, weekly competitive tournaments, verified real-time leaderboards, game coin transactions, and national championship rewards.',
     ],
   },
   {
     number: '2.0',
     title: 'Payment & Billing Terms',
     paragraphs: [
-      'All purchases, coin pack top-ups, and subscription fees are debited directly from the subscriber’s verified telebirr SuperApp wallet balance in Ethiopian Birr (ETB).',
-      'No SMS shortcodes or third-party premium SMS billing mechanisms are used. All transactions require direct authorization through the telebirr SuperApp interface and are instantaneous and non-refundable once activated.',
+      'All purchases, coin pack top-ups, and subscription fees are debited directly through verified EthioTelecom operator billing and mobile account balance in Ethiopian Birr (ETB).',
+      'No third-party unauthorized premium billing mechanisms are used. All transactions require direct authorization through the portal interface and are instantaneous and non-refundable once activated.',
     ],
   },
   {
     number: '3.0',
     title: 'Subscription Terms & Validity',
     paragraphs: [
-      'GoPlay offers three distinct subscription plans:',
+      'TelePlus offers three distinct subscription plans:',
     ],
     bulletPoints: [
       'Daily Plan: 5 Birr per 24 hours of unlimited catalog gameplay.',
@@ -49,7 +49,7 @@ const GOPLAY_TERMS: TermSection[] = [
     number: '4.0',
     title: 'Coin Packages & Usage',
     paragraphs: [
-      'Users can purchase game coins directly from their telebirr balance at standard package rates:',
+      'Users can purchase game coins directly from their mobile balance at standard package rates:',
     ],
     bulletPoints: [
       '10 Birr = 10 Coins',
@@ -80,7 +80,7 @@ const GOPLAY_TERMS: TermSection[] = [
     number: '7.0',
     title: 'Privacy & Data Protection',
     paragraphs: [
-      'GoPlay respects player confidentiality. All mobile phone numbers (MSISDNs) are masked across all public leaderboard views (e.g., 091*****890) to prevent unauthorized identification.',
+      'TelePlus respects player confidentiality. All mobile phone numbers (MSISDNs) are masked across all public leaderboard views (e.g., 091*****890) to prevent unauthorized identification.',
       'Personal data collected is limited to account authentication, score verification, and prize distribution in strict compliance with applicable Ethiopian data protection laws.',
     ],
   },
@@ -89,14 +89,14 @@ const GOPLAY_TERMS: TermSection[] = [
     title: 'Disputes & Customer Care',
     paragraphs: [
       'In the event of gameplay interruptions, score discrepancies, or billing questions, players should consult Help & Customer Care from within the Profile tab.',
-      'GoPlay reserves the right to make technical updates to games and tournaments to ensure smooth operation and fair competition.',
+      'TelePlus reserves the right to make technical updates to games and tournaments to ensure smooth operation and fair competition.',
     ],
   },
   {
     number: '9.0',
     title: 'Acceptance of Terms',
     paragraphs: [
-      'By accessing GoPlay, subscribing to packages, or participating in tournaments, the player acknowledges and agrees to be bound by these Terms & Conditions.',
+      'By accessing TelePlus, subscribing to packages, or participating in tournaments, the player acknowledges and agrees to be bound by these Terms & Conditions.',
     ],
   },
 ];
@@ -136,16 +136,16 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onBack, showHeader = true 
       {/* 2. Top Summary Card */}
       <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed mb-4">
         <p className="font-bold text-[#17202A]">
-          Official GoPlay Gaming Terms & Conditions
+          Official TelePlus Gaming Terms & Conditions
         </p>
         <p className="text-[11px] text-slate-500 mt-1">
-          Governing tournament participation, fair play, telebirr billing, and data protection.
+          Governing tournament participation, fair play, operator billing, and data protection.
         </p>
       </div>
 
       {/* 3. Terms Sections */}
       <div className="space-y-3">
-        {GOPLAY_TERMS.map((section) => (
+        {TELEPLUS_TERMS.map((section) => (
           <div
             key={section.number}
             id={`term-section-${section.number.replace('.', '-')}`}

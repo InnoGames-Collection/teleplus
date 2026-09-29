@@ -1,5 +1,5 @@
 /**
- * Privacy Policy Page Component for GoPlay / TelePlus
+ * Privacy Policy Page Component for TelePlus
  * 
  * Preserves all 5 source Privacy Policy sections exactly with designated icons and ordering.
  */

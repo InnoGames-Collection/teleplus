@@ -41,6 +41,3 @@ export const TelePlusLogo: React.FC<TelePlusLogoProps> = ({
     </div>
   );
 };
-
-// Backwards-compatible export for any existing references
-export const GoPlayLogo = TelePlusLogo;

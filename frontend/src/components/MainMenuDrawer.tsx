@@ -25,7 +25,7 @@ import {
   Check 
 } from 'lucide-react';
 import { LanguageCode } from '../types';
-import { TelePlusLogo } from './GoPlayLogo';
+import { TelePlusLogo } from './TelePlusLogo';
 
 export type MainMenuSection = 'faq' | 'help_support' | 'games' | 'subscription' | 'pricing' | 'terms' | 'privacy';
 

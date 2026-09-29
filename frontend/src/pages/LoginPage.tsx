@@ -19,7 +19,7 @@
 import React, { useState, useEffect } from 'react';
 import { UserProfile } from '../types';
 import { AuthService } from '../services/authService';
-import { TelePlusLogo } from '../components/GoPlayLogo';
+import { TelePlusLogo } from '../components/TelePlusLogo';
 import { 
   Menu, 
   Phone, 

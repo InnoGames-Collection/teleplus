@@ -1,6 +1,6 @@
 /**
- * GoPlay - Coin Purchase Wallet
- * Simplified clean purchase interface for GoPlay Coins.
+ * TelePlus - Coin Purchase Wallet
+ * Simplified clean purchase interface for TelePlus Coins.
  */
 
 import React, { useState } from 'react';
@@ -61,13 +61,13 @@ export const CoinTopupModal: React.FC<CoinTopupModalProps> = ({
         id: 'CTX_' + Date.now().toString(36).toUpperCase(),
         type: 'TELEBIRR_PURCHASE',
         amount: selectedPack.coins,
-        description: `Purchased ${selectedPack.coins} GoPlay Coins (${selectedPack.priceETB} ETB)`,
+        description: `Purchased ${selectedPack.coins} TelePlus Coins (${selectedPack.priceETB} ETB)`,
         timestamp: new Date().toISOString(),
       });
 
       onProfileUpdate(updated);
       setIsProcessing(false);
-      setSuccessMsg(`Successfully credited ${selectedPack.coins} GoPlay Coins!`);
+      setSuccessMsg(`Successfully credited ${selectedPack.coins} TelePlus Coins!`);
 
       setTimeout(() => {
         setSuccessMsg(null);
@@ -85,7 +85,7 @@ export const CoinTopupModal: React.FC<CoinTopupModalProps> = ({
         {/* Header */}
         <div className="bg-[#1688C9] text-white p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-black tracking-tight">GoPlay Coins</h3>
+            <h3 className="text-lg font-black tracking-tight">TelePlus Coins</h3>
             <p className="text-xs text-blue-100 font-medium mt-0.5">
               Choose a package
             </p>

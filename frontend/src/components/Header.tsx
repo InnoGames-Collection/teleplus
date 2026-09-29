@@ -12,7 +12,7 @@
 import React from 'react';
 import { UserProfile } from '../types';
 import { Menu, Zap } from 'lucide-react';
-import { TelePlusLogo } from './GoPlayLogo';
+import { TelePlusLogo } from './TelePlusLogo';
 
 interface HeaderProps {
   profile?: UserProfile;

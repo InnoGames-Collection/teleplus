@@ -1,5 +1,5 @@
 /**
- * GoPlay - Pricing
+ * TelePlus - Pricing
  * Direct telebirr SuperApp instant billing for game coins.
  */
 

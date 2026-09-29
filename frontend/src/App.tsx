@@ -11,7 +11,7 @@ import { EntitlementService } from './services/entitlementService';
 import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
 import { NotificationToast } from './components/NotificationToast';
-import { TelePlusLogo } from './components/GoPlayLogo';
+import { TelePlusLogo } from './components/TelePlusLogo';
 
 // Modals
 import { GameLauncherModal } from './components/GameLauncherModal';
